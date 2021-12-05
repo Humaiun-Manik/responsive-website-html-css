@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 body{
     font-family: 'Roboto', sans-serif;
@@ -50,6 +51,7 @@ h2 h3{
 .banner{
     display: grid;
     grid-template-columns: 5fr 7fr;
+    grid-row-gap: 50px;
     margin-top: 50px;
 }
 .banner-left{
@@ -59,6 +61,14 @@ h2 h3{
 .banner-left h1{
     font-size: 55px;
 }
+.btn-buy-now{
+    background-color: #9bdc28;
+    padding: 10px 20px;
+    font-weight: 600;
+    margin-top: 30px;
+    border: none;
+    font-size: 22px;
+}
 .banner-right{
     padding: 20px;
 }
@@ -66,13 +76,11 @@ h2 h3{
     width: 100%;
     transform: rotate(-25deg)
 }
-.buy-now-btn{
-    width: 100px;
-}
 
 .card-container{
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    grid-row-gap: 50px;
     place-items: center;
 }
 .product-card{
@@ -221,6 +229,7 @@ h2 h3{
     font-size: 15px;
     border: 1px solid #9bdc28;
     outline: 0;
+    cursor: pointer;
 }
 .map{
     width: 100%;
@@ -234,4 +243,62 @@ footer{
     margin-top: 50px;
     height: 50px;
     border: 1px solid #ddd;
+}
+
+#menu-toggler{
+    display: none;
+}
+.menu-toggler-label{
+    display: none;
+}
+.toggler-icon{
+    display: flex;
+    flex-direction: column;
+}
+.toggler-icon span{
+    height: 4px;
+    width: 25px;
+    background-color: #9bdc28;
+    margin-bottom: 4px
+}
+#menu-toggler:checked ~ .navigation{
+    transform: translateX(0);
+}
+
+@media (max-width:1050px){
+    .card-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width:700px){
+    .banner,.card-container,.about,.contact{
+        grid-template-columns: 1fr;
+    }
+    .menu-toggler-label{
+        display: block;
+    }
+    .navigation{
+        position: fixed;
+        text-align: center;
+        background-color: #9adc28e8;
+        top: 0;
+        left: 0;
+        max-width: 70%;
+        height: 100vh;
+        z-index: 90;
+        padding: 50px;
+        transform: translateX(-100%);
+        transition: 0.3s linear;
+    }
+    .navigation:hover{
+        color: red;
+    }
+    .navigation li{
+        display: block;
+        margin: 30px;
+    }
+    .navigation li a:hover{
+        color: white;
+        transition: .5s;
+    }
 }
